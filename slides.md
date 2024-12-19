@@ -143,7 +143,25 @@ colorSchema: light
 OAuth 2.0 のフローには複数あるが[*]、代表的な Authorization Code
 Grant フロー(認可コードグラントフロー)について解説
 
-<img src="https://www.mermaidchart.com/raw/f74a607a-0ace-4a08-bebe-241cab8d3008?theme=light&version=v0.1&format=svg" height="600px">
+```mermaid {scale: 0.6}
+sequenceDiagram
+    autonumber
+    participant User as リソースオーナー
+    participant Client as クライアントアプリ
+    participant AuthServer as 認可サーバ
+    participant ResourceServer as リソースサーバ
+
+    User->>Client: リクエスト
+    Client->>AuthServer: 認可リクエスト
+    AuthServer->>User: 認証・認可同意のプロンプト
+    User-->>AuthServer: 認証＆同意
+    AuthServer-->>Client: 認可コード付きでクライアントアプリにリダイレクト
+    Client->>AuthServer: 認可コードでアクセストークンを要求(クライアントアプリのサーバ認証も行う)
+    AuthServer-->>Client: アクセストークンを返却
+    Client->>ResourceServer: アクセストークン付きでリクエスト
+    ResourceServer-->>Client: リソースデータを返却
+
+```
 
 [*]: https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f
 
@@ -279,7 +297,36 @@ PublicClient ではクライアント認証を行わない。
 
 # ネイティブアプリで認可コードを横取りされるシーケンス
 
-<img src="https://mermaid.ink/svg/pako:eNqlVU1rE0EY_ivLnGpYQ5NtPnYOPXkR9FLpRXJZstN2ocnG7a5YQyAzq1CRkhIqFbzUKjEmtkWCoKTSH_O2a_wXzsymIckmzUr3sDu8H8_7vs8-M1NFRdskCKMd8swj5SJ5YBmbjlEqlBX-VAzHtYpWxSi7SnDYD5r-oP466hqcdK_PejNdwemnQasB7Bz8r8A-AzsBvwf-nlwcgd-ZgdbZv26cA_sB_gX4B_x9SzNTOOF75L2_ujrqDSsB6wSvGkDPgDJgb0epwJqiNd4X-yVaE2W7QN8B_cDDQsgRDIdcOBNWJOpvgcQhuZnHsr5cNwctGnxnw0YXIYkBInTgG4pEEe5ph30rS8Lg1-Us3yTo3vraQ6BdYF1Z-xL84_W1R3J9KuGO74WNGEXXem64ZC75Ufskt9w_aF8Abd8ETsw5zt6cecazY5eU_p70v7nqvwe6H6WA07JwfJMsJGB6EKGDiAixkkjcUo2zwjX457AN9AhoK5ov_lVkgERiStXj6hgZI3zwYn_r9Oryo8yObowYKo6BeDcdT2yNcOcJjF6oHWVp5i--k2Tj7N05Tf2nVOJwMnlMxGEG6JeJJPpzPBKpqESckmGZ_ESvij4KyN0iJVJAmC9NsmF4224BFco1Hmp4rv1kt1xE2HU8oiKvYvKxhhcAwhvG9g638vMW4Sp6gXBKzyezK8t6Or-S1fWUnkmraBdhLacl01pGz-fSus4_ea2mope2zSGWk3r45DI5LZXVU5rEeyqdQ3xiWq7tPA5vIXkZqcixvc2tYUTtHxZrpzM" >
+```mermaid {scale: 0.45}
+sequenceDiagram
+    participant 攻撃者
+    participant 被害者
+    participant 正規クライアントアプリ
+    participant 認可サーバー
+    participant 攻撃者アプリ
+
+    攻撃者->>被害者: 悪意のあるアプリをインストールさせる
+    被害者->>正規クライアントアプリ: リソースアクセスを要求
+    正規クライアントアプリ->>認可サーバー: 認可リクエスト (リダイレクトURIにカスタムURLスキーム)
+    activate 認可サーバー
+    認可サーバー->>被害者: 認証と認可を要求
+    被害者->>認可サーバー: 認証と認可
+    認可サーバー->>被害者: 認可コード付きリダイレクト (カスタムURLスキーム)
+    deactivate 認可サーバー
+
+    被害者-->>攻撃者アプリ: **カスタムURLスキームを悪用して攻撃者アプリにリダイレクト**
+    攻撃者アプリ->>攻撃者: 認可コードを送信
+
+    攻撃者->>正規クライアントアプリ: 認可コードを送信
+
+
+    正規クライアントアプリ->>認可サーバー: アクセストークン要求 (認可コード付き)
+    activate 認可サーバー
+    認可サーバー->>正規クライアントアプリ: アクセストークン
+    deactivate 認可サーバー
+
+    正規クライアントアプリ->>リソースサーバー: アクセストークンでリソースへアクセス
+```
 
 ※カスタム URL スキーム: ネイティブのアプリを URL 形式で指定する。複数のアプリ間でユニークで**なく**てよい
 
@@ -298,14 +345,56 @@ code_verifier と code_challenge によって、パブリッククライアン�
 
 # PKCE を導入した認可コードグラントフロー
 
-<img class="h-100" src="https://mermaid.ink/svg/pako:eNqtVN9v0lAU_lfIfZoJkkHHj_ZhT7765JshMU17gSbQYtcuTkLC7X0YGsxwwaEPhkW3BVkmMWDUyMIfcyjjz_DeUgxQOhe1D21z73fOd8733XsqSDFUjCS0h5_aWFfwA03Om3Ipq0fYU5ZNS1O0sqxbEXD6QD-BcwbOB6ADoPUgZtZ75R71wfkKdAS0yd4b8tAeONcc4PwAp-chX_5GLr-DjPd3d4OLUoS38GQfm1pOwyY4xzetzrTejGxxIIfUgJ4C6U1PDt2rtltv3_ub_EpBLhaxnsdLBKvE5DPQI6AUnG9Az93a2W08QamkhXxcILbT5QLRus-yTO82L8Gp-dllxdL2ZQuHih9c522GuOAVMeuOgHQXccezCzL94vi9hMSFd7Sc7LaCNui-AA484AteyrgF5F1AEtK9GTaBnAN57aui4j_qcmdb-D435OfcEK95FjqY6xLZWi-TdNcP5H8wbFNh6zQrx69xAqQNNTIZv3ev3gJ5A04DSCeg3LTfmo1oKHOINWGa8Eu3cgeANCbfa7PDIa-GdNzTodus_6NJq4fwLlYxcSbXYyAfgVysRJPL5RAURSVslmRNZROxwivIIquASziLJPar4pxsF60syupVBpVty3h0oCtIskwbR5FdVlkr_gBFUk4u7rFVNvSQVEHPkBQXM7HUzraYyOykRDEuJhNRdIAkIS3EEkJSzKQTosg-GaEaRc8Ng6XYjonzJ51MC_GUGBe8fI-9TT8_VjXLMB_Op7g3zKPINOx8wUdUfwHkwSZ6">
-
+```mermaid {scale: 0.5}
+sequenceDiagram
+    participant クライアント
+    participant 認可サーバー
+    participant リソースオーナー
+    
+    
+    クライアント->>クライアント: code_verifierを生成 (ランダムな文字列)
+    クライアント->>クライアント: code_challengeを生成 (code_verifierのハッシュ値)
+    クライアント->>認可サーバー: 認可リクエスト (code_challengeを含む)
+    activate 認可サーバー
+    認可サーバー->>リソースオーナー: 認証と認可を要求
+    リソースオーナー->>認可サーバー: 認証と認可
+    認可サーバー->>クライアント: 認可コードを返す (code_challengeと紐づけ)
+    deactivate 認可サーバー
+    クライアント->>認可サーバー: アクセストークン要求 (認可コードとcode_verifierを含む)
+    activate 認可サーバー
+    認可サーバー->>認可サーバー: code_verifierをハッシュ化し、保存されたcode_challengeと比較
+    認可サーバー-->>クライアント: アクセストークン (ハッシュ値が一致した場合)
+    deactivate 認可サーバー
+    クライアント->>リソースサーバー: アクセストークンを使ってリソースにアクセス
+```
 ---
 
 # PKCE によって認可コード横取り攻撃を防ぐことができる理由
 
 悪意のあるアプリは`code_verifier`を特定できないため、横取りはできてもアクセストークンを発行できない。
-<img src="https://mermaid.ink/svg/pako:eNqlVE1r20AQ_StmTzG4JrbiD-mQU6899VYMRUhrW2BLriKFpsbg3c0hTVPkhqSmEChNneAqpCY4pbR16Y8ZJOtndCXZpkRR0tI9rMTu2_fezOxOFymGipGEtvAzG-sKfqjJDVNu1_QMHx3ZtDRF68i6lfEvPwbnDtAJsE9AR0BPgU2B7d2CpK6_6wD5DIQCfRUhh8DcJDJwX3vOBOgXYDNgAz4nMfwg0J8hgH4D6kbI_RUyntO8PdjcTEpIS9mQmO-MQ2K2l1kLM_FUacqtFtYbGOihN7gA2s_GGrJiaduyhVNNJ9e5fJr7yEQwngEZL88dBufEv6IxWdq59Ij-JEvEQsbz6wGQMyBvsne4TavcKmV0GsFf-mPXc94C3Y_JVHxvdhaFShFICSvcD0v0Iy5RlA5et2mcqczaygaQIZD3N0zyqKM0bGNTq2vYBOJy3H-V8zaT95m4WKbeSVwwf3Qyvz79R70bMR1EYe1yZaAE-gSYA4wB_QrszOuP_MlRMGPchTe68o-HqVp3Vj98JPxlsZn362R-eZRZSyvM_N334MNBLJX9i7uBcqiNzbasqbwFdcMDNWQ1cRvXkMR_VVyX7ZZVQzW9x6GybRmPd3QFSZZp4xyyOyqnXXQsJNXl1hZf5V0DSV30HEkFsZovb6yLxepGWRQLYqmYQztIEipCviiUxGqlKIr8UxV6OfTCMDjFel6MR6VUEQplsSBEfE-izQU_VjXLMB_FbTPqnjlkGnajuUD0fgMhbNeu">
+
+```mermaid {scale: 0.6}
+sequenceDiagram
+    participant 正規クライアント
+    participant 悪意のあるアプリ
+    participant 認可サーバー
+    participant リソースオーナー
+    
+    正規クライアント->>認可サーバー: 認可リクエスト (code_challengeを含む)
+    activate 認可サーバー
+    認可サーバー->>リソースオーナー: 認証と認可を要求
+    リソースオーナー->>認可サーバー: 認証と認可 (code_challengeと紐づけ)
+    認可サーバー->>悪意のあるアプリ: 認可コード横取り
+    deactivate 認可サーバー
+    
+    悪意のあるアプリ->>認可サーバー: アクセストークン要求 (横取りした認可コードとcode_verifierなし)
+    activate 認可サーバー
+    認可サーバー->>認可サーバー: 横取りした認可コードに紐づくcode_challengeを検索
+    認可サーバー->>認可サーバー: code_verifierがないため、ハッシュ値比較に失敗
+    認可サーバー-->>悪意のあるアプリ: エラー応答 (アクセストークン発行失敗)
+    deactivate 認可サーバー
+```
+
 
 ---
 
@@ -321,7 +410,34 @@ code_verifier と code_challenge によって、パブリッククライアン�
 
 攻撃者の作った認可リクエストを踏まされて、不正にアクセストークンを取得される
 
-<img scr="https://mermaid.ink/svg/pako:eNq1Vctu2kAU_RVrVlSiKEB42Iusuumim1bdVGwscBJL4VFjV00REp5JJSpaQawoJFI2pBGl0IAqWikpSfiYCw79i84Yg0JsExSpXoztueNzzr1zrqeAktmUhASUl95qUiYpPZPFLUVMJzIcvXKiospJOSdmVM48GJgGmZQ-OkOT086423cNmedfJ80q4B6Q74DPAJ8C6QMpu4C0v4yrPcC_gVwBqdFxumY6ztmfbmzMnwXOxG1zrwp6F3QMuGJjkDYjxC3Al5QKsDG6PjHLNc7HIqTEdJAflqby65fPQe_NERkSxnR84qSdZ-mgtWD7Fqfxt6SPhg3ON7qpCByQhpVNB_Ae4Cbgb0AOWYpMQdnmEJOq_E5UpftlnL8ybkdxVsud8-VVCg1kn9V_qgYPQW-DXnfQe2yAc36xGDQ-aV2B3potNCZN3fyJV8vi3tcrU1rxvhX_xCiHB6AfP2KHU9LDBbiTwh3vOUXM9n6BzF1QxznvImjREAs94NFXbrLMi4ZVG69vPFXSxhlUqFNAb876wQPCY3NZnLlxYHcic1_PahXbI__Pny5q3Km65tkJcyA2mEh8DoQAqXtCL639knxvj_9MGp9X9tyD5X6UiMUuoMs67K9km6Bz-6s2GhyBvr_0lzs3pW0bfG0xXIJ-MUO1yc0WVWaMq4fjmzryo7SkpEU5Rc-aAiNIIHVbSksJJNDHlLQpajtqAiUyRbpU1NTsq91MEgmqokl-pOVStFj20YSETXEnT2fpsYGEAnqPhCAfD0TX1_hQfD3K80E-EvKjXSSEY-FAKBzh47EQz9NbPFz0ow_ZLIVYC_DTKxaJhYNRPhi28N5YQRtfSslqVnkxPR-tY9KPlKy2tW2vKP4DWjsG7A">
+```mermaid {scale: 0.4}
+sequenceDiagram
+    participant 攻撃者
+    participant 被害者
+    participant 正規クライアント
+    participant 認可サーバー
+    
+    攻撃者->>攻撃者: 悪意のある認可リクエストを作成 (リダイレクトURIは攻撃者のもの)
+    攻撃者->>被害者: 悪意のあるリンクを送信 (例: メールやウェブサイト)
+    activate 被害者
+    被害者->>認可サーバー: 悪意のある認可リクエスト (stateパラメータなし)
+    activate 認可サーバー
+    認可サーバー->>被害者: 認証と認可を要求
+    被害者->>認可サーバー: 認証と認可
+    認可サーバー->>被害者: 認可コードを返す (リダイレクトURIは攻撃者のもの)
+    deactivate 認可サーバー
+    被害者->>攻撃者: 認可コードを送信 (攻撃者のリダイレクトURIにリダイレクト)
+    deactivate 被害者
+    攻撃者->>正規クライアント: 認可コードを渡す (正規クライアントのリダイレクトURIを介して)
+    正規クライアント->>認可サーバー: アクセストークンを要求 (stateパラメータなし)
+    activate 認可サーバー
+    認可サーバー->>認可サーバー: stateパラメータの検証をスキップ
+    認可サーバー-->>正規クライアント: アクセストークンを発行
+    deactivate 認可サーバー
+    
+    正規クライアント->>正規クライアント: アクセストークンを攻撃者のアカウントに紐付け
+    攻撃者->>攻撃者: 被害者のリソースへのアクセス権を取得
+```
 
 ---
 
@@ -329,7 +445,34 @@ code_verifier と code_challenge によって、パブリッククライアン�
 
 クライアントアプリは state を発行して認可リクエストのパラメータとして付与する。リダイレクト時にキャッシュした state とリダイレクトのパラメータの state を検証する
 
-<img src="https://mermaid.ink/svg/pako:eNqVVU1P2zAY_iuRT0XqEG2BNjlw2TRph11Au0y9RI2BSv1am05jFVJsjwEC1A6hAQe0wSbatYNqYtM-ytYf8zZt9i9mJ6F0JC0lB8fx-8TP4_d9bJdQIqthpKACflbEmQR-kFSX8mo6npH4k1PzejKRzKkZXQLaBPYJ6EegJ8AugG14Md29VneXWcaaN2SdNMzzC_9QfccsN4F-A3YJrMJbB-O0Xt57c3PeQUUSA6JrAHsPpF7QVR2bBkfs9vbedTcqQPbBIEBbwBjQ78CqAk4anfaReXYwgqwvXbmSyuoCSGtAf3IIZ_hrkE77WArYpMDe2FqOxXpou9M6ALIz4RCoCT35nGNu5qP_Kfg8-RhCfCe-IUn2jntWbNUugdSugLvWKel-oWPLHvx7bEo7fmHHN_nfA7W02ntADqWASAUvNa8U-2xXbePJ_CMgze7ZB-u07K0jkHOglLduYjR8e2oGFudnuJE6rxwxSo__EhrecR_N_9tn_E1y0_5bQDcHZJvlt-affXerCHrusyMB5B1y3geSWm-talbcI0BN6dJ1aLvzw7DWv_IqAd1yAMO3lo9nRFyYvOXuLmHqpi3BtZ4UGJl5s9IAakxcM99a6KGm9M_gUHm9w1_W8fb1nGN4DKcK2C93vAR1IK9uSZ-_vpp9Glya66e9ymspcH9h_qFzMPMKchEW-901qm5-cEZDQZTG-bSa1Pg1UBLDcaQv4zSOI4V3NbyoFlN6HMUzqxyqFvXswkomgRQ9X8RBVMxpXLx7ayBlUeULCiJ-riOlhF4gJSTHJmenp-RwbHpWlkPyTDiIVpASiUYmw5EZORYNyzJ_xSKrQfQym-VTTE3KzhOdiUZCs3IoYs_31A6682MtqWfzj52ry77BgiifLS4tu4jVf7BwsFw" class="h-100">
+```mermaid {scale: 0.35}
+sequenceDiagram
+    participant クライアント
+    participant 攻撃者
+    participant 被害者
+    participant 認可サーバー
+    
+    クライアント->>クライアント: ランダムなstate値を生成し、セッションに保存
+    クライアント->>被害者: 認可リクエストを送信 (stateパラメータ付き)
+    activate 被害者
+    被害者->>認可サーバー: 認可リクエスト (stateパラメータ付き)
+    activate 認可サーバー
+    認可サーバー->>被害者: 認証と認可を要求
+    被害者->>認可サーバー: 認証と認可
+    認可サーバー->>被害者: 認可コードとstate値を返す (リダイレクトURIは正規クライアントのもの)
+    deactivate 認可サーバー
+    被害者->>クライアント: 認可コードとstate値を送信 (正規クライアントのリダイレクトURIにリダイレクト)
+    deactivate 被害者
+    クライアント->>クライアント: セッションからstate値を取得し、レスポンスのstate値と照合
+    alt state値が一致する
+        クライアント->>認可サーバー: アクセストークンを要求 (認可コードとstate値を含む)
+        activate 認可サーバー
+        認可サーバー->>クライアント: アクセストークンを発行
+        deactivate 認可サーバー
+    else state値が一致しない
+        クライアント->>クライアント: エラー処理 (CSRF攻撃の可能性)
+    end
+```
 
 ---
 
@@ -337,7 +480,28 @@ code_verifier と code_challenge によって、パブリッククライアン�
 
 悪意のあるアプリはクライアントアプリが生成する state がわからないため、クライアントアプリが必ずトークンを発行せずエラーとする。
 
-<img src="https://mermaid.ink/svg/pako:eNqdVE1v2kAQ_SvWnohEUYDwYR9yaVWph14S9VJxsbCTWAofBbtqipDY3aQlQhEURYkqtQfSCii0QRWq2ggSfsxgx_0XXS8OghhU2j2s1zuz772ZnZ0CSmYUFUkor74w1HRSfaTJuzk5lUgLbGTlnK4ltayc1gUgPaBfgHwGcgG0D7Ts9bFOB1ad2qUjr8m-6JqX_cWmzolZ7QH5AXQItMbmic9knmI-2NycriXBIh3rsAr4EjABUnExaMeRSdpArphAIPXx9QerXBN8joWWHPX0K4-k_GzrCeDeFNFBIoTNa17aqXYPLYftc8767xIejxqCb3xTkQSgDR5NF8ghkCaQFtAzJ0RHQdnlkJO69lLW1fvJmf463J7krBa74MvrDBroO-fWJmrICHAH8LmHfskFePfnk8HsdnsIuH3nWLeb2PpOVovi3umVKbm9z-3HDuXoFPD7_7hhQVH_noGZGGaKz6vi7vLn2BYr6nr3XUWzguYrYrYavQ9xkSDrV4Onxfr2yW5WvWeW6mNvZlBhRQK46cryHl6iAsgAKAXyE2jL2cMVIMe8DM0S86ub1TPz5tzBLmHOyQr1I38_V0zO1BG3b49aZq38z-xtXupD823ztvZG8D3c3no8SRxDZ-mx6bVVaq0hP0qpuZSsKaztFRySBNL31JSaQBJbKuqObOzrCZRIF5mrbOiZ7YN0Ekl6zlD9yMgqTKbbJZG0I-_n2S7rY0gqoFdICorxQHRjXQzFN6KiGBQjIT86QFI4Fg6EwhExHguJIvvEw0U_ep3JMIj1gDgZsUgsHIyKwTDHe86NLr6qaHom93TSqnnH9qNcxtjdcz2KfwDSQx-w">
+```mermaid
+sequenceDiagram
+    participant クライアント
+    participant 攻撃者
+    participant 被害者
+    participant 認可サーバー
+    
+    攻撃者->>攻撃者: 悪意のある認可リクエストを作成 (リダイレクトURIは攻撃者のもの)
+    攻撃者->>被害者: 悪意のあるリンクを送信 (例: メールやウェブサイト)
+    activate 被害者
+    被害者->>認可サーバー: 悪意のある認可リクエスト (stateパラメータなし)
+    activate 認可サーバー
+    認可サーバー->>被害者: 認証と認可を要求
+    被害者->>認可サーバー: 認証と認可
+    認可サーバー->>被害者: 認可コードを返す (リダイレクトURIは攻撃者のもの)
+     deactivate 認可サーバー
+    被害者->>攻撃者: 認可コードを送信 (攻撃者のリダイレクトURIにリダイレクト)
+    deactivate 被害者
+    攻撃者->>クライアント: 認可コードを渡す (正規クライアントのリダイレクトURIを介して)
+    クライアント->>クライアント: セッションからstate値を取得し、レスポンスのstate値と照合
+    クライアント->>クライアント: エラー処理 (CSRF攻撃の可能性)
+```
 
 ---
 
@@ -349,6 +513,19 @@ code_verifier と code_challenge によって、パブリッククライアン�
   - イントロスペクションエンドポイントなどへのリクエストを通してアクセストークンのメタデータ(トークンの有効期限、スコープ、関連付けられたクライアントなど)を取得できる
 - トークンの失効
   - アクセストークンが漏洩した場合や、利用者の許可を取り消す場合など、トークンを無効化したい場合は、リヴォケーションエンドポイントへのリクエストによって無効化する
+
+---
+
+# アジェンダ
+
+1. 認可と認証
+2. OAuth 2.0
+3. **OpenID Connect (OIDC)**
+4. OAuth 2.0 と OIDC の応用
+
+---
+
+# OpenID Connect (OIDC)
 
 ---
 
