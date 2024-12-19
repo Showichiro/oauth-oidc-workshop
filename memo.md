@@ -95,6 +95,7 @@
     - ユーザーがブラウザを使用しない、サーバーサイドでの認証
   - Identity Assurance
     - 認証レベルの強化、多要素認証など
+  - OpenID Connect Implementer's Guide
 
 **学習教材とリソース**
 
