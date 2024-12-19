@@ -3,9 +3,24 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export",
+    "format":"prettier slides.md --write"
   },
+  "type": "module",
   "keywords": [],
   "author": "Showichiro",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@slidev/cli": "^0.50.0",
+    "@slidev/theme-apple-basic": "^0.25.1",
+    "@slidev/theme-default": "^0.25.0",
+    "@slidev/theme-seriph": "^0.25.0",
+    "slidev-theme-geist": "^0.8.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "prettier-plugin-slidev": "^1.0.5"
+  }
 }
