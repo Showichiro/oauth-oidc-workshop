@@ -1,6 +1,6 @@
 ---
 theme: apple-basic
-title: OAuth2.0/OIDC 概説r
+title: OAuth2.0/OIDC 概説
 ---
 
 # OAuth2.0/OIDC 概説
