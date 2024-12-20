@@ -6,7 +6,8 @@
     "dev": "slidev --open",
     "build": "slidev build",
     "export": "slidev export",
-    "format":"prettier slides.md --write"
+    "format": "prettier slides.md --write",
+    "lint": "textlint slides.md"
   },
   "type": "module",
   "keywords": [],
@@ -21,6 +22,9 @@
   },
   "devDependencies": {
     "prettier": "^3.4.2",
-    "prettier-plugin-slidev": "^1.0.5"
+    "prettier-plugin-slidev": "^1.0.5",
+    "textlint": "^14.4.0",
+    "textlint-rule-preset-ja-technical-writing": "^10.0.1",
+    "textlint-rule-preset-jtf-style": "^3.0.1"
   }
 }
