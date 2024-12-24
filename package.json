@@ -6,8 +6,8 @@
     "dev": "slidev --open",
     "build": "slidev build",
     "export": "slidev export",
-    "format": "prettier slides.md --write",
-    "lint": "textlint slides.md"
+    "format": "prettier slides.md pages/**/*.md --write",
+    "lint": "textlint slides.md pages/**/*.md"
   },
   "type": "module",
   "keywords": [],
@@ -18,9 +18,11 @@
     "@slidev/theme-apple-basic": "^0.25.1",
     "@slidev/theme-default": "^0.25.0",
     "@slidev/theme-seriph": "^0.25.0",
+    "slidev-component-pager": "^1.1.0",
     "slidev-theme-geist": "^0.8.1"
   },
   "devDependencies": {
+    "playwright-chromium": "^1.49.1",
     "prettier": "^3.4.2",
     "prettier-plugin-slidev": "^1.0.5",
     "textlint": "^14.4.0",
