@@ -4,4 +4,4 @@ Webブラウザのないデバイスや入力制限のあるデバイスでOAuth
 [RFC 8628](https://datatracker.ietf.org/doc/html/rfc8628)で定義される。 \
 例）テレビなどでNetflixなどにログインするケースを想定。
 
-<img src="/device-flow.drawio.svg" />
+<img src="/assets/device-flow.drawio.svg" />

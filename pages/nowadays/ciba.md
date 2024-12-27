@@ -7,7 +7,7 @@
 
 詳細は割愛するが、概要としては以下の通り。
 
-<img src="/ciba.drawio.svg"/>
+<img src="/assets/ciba.drawio.svg"/>
 
 ---
 
@@ -19,4 +19,4 @@
 - POS端末での決済を、ユーザーのスマートフォン上で許可する
 - 子の（親のカードを使った）支払いを、親がスマートフォン上で許可する
 
-<img src="/ciba-example.drawio.svg" class="h-75" />
+<img src="/assets/ciba-example.drawio.svg" class="h-75" />

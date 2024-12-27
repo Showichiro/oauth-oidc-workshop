@@ -11,7 +11,7 @@
 
 従来認証方式ではクライアントがサーバに向けてID/Passwordを入力しユーザのデータにアクセス。
 
-<img src="/conventional.drawio.svg" width="600px" >
+<img src="/assets/conventional.drawio.svg" width="600px" >
 
 ---
 
@@ -19,7 +19,7 @@
 
 そのため、3rdパーティのアプリがユーザのデータにアクセスするためには、ID/Password（に類する情報）を共有する必要。
 
-<img src="/conventional-3rdparty.drawio.svg" width="600px">
+<img src="/assets/conventional-3rdparty.drawio.svg" width="600px">
 
 ---
 
@@ -27,4 +27,4 @@
 
 また、サービスごとにIDが管理されているため、ユーザは複数のIDを管理する必要があった。
 
-<img src="/conventional-multi-app.drawio.svg" width="600px">
+<img src="/assets/conventional-multi-app.drawio.svg" width="600px">

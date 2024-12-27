@@ -35,4 +35,4 @@ sequenceDiagram
 
 Googleカレンダーを利用する場合。
 
-<img src="/oauth2.0-example.drawio.svg" class="h-90" />
+<img src="/assets/oauth2.0-example.drawio.svg" class="h-90" />

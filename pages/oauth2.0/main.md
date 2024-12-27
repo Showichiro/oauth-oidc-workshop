@@ -4,7 +4,7 @@
 リソース所有者が自身の所有するリソースへのアクセス権を第三者アプリケーションに安全に委任するための認可の技術仕様。\
 複数のRFCに仕様が定義されている。
 
-<img src="/oauth-rfc.drawio.svg" class="h-90" />
+<img src="/assets/oauth-rfc.drawio.svg" class="h-90" />
 
 ---
 src: ./oauth2.0-agenda.md

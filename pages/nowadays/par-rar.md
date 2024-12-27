@@ -6,7 +6,7 @@
 
 認可リクエストの内容を事前に認可サーバへ登録するエンドポイントを追加する。
 
-<img src="/par.drawio.svg" class="h-70" />
+<img src="/assets/par.drawio.svg" class="h-70" />
 
 ---
 

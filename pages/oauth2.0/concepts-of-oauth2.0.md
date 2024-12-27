@@ -17,6 +17,6 @@
 
 図にするとこんな感じ。
 
-<img src="/oauth.drawio.svg" width="600px">
+<img src="/assets/oauth.drawio.svg" width="600px">
 
 事前に認可サーバへのリクエストを通じて「クライアントアプリに特定の操作を許可する」というフローを追加した。
