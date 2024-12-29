@@ -2,9 +2,6 @@
 theme: apple-basic
 title: OAuth2.0/OIDC 概説
 colorSchema: light
-addons:
-  - slidev-component-pager
-download: true
 author: uchihori
 ---
 
