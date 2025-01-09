@@ -12,6 +12,10 @@ src: /pages/agendas/agenda.md
 ---
 
 ---
+src: /pages/agendas/overview.md
+---
+
+---
 src: /pages/authorization-authentication/main.md
 ---
 
@@ -37,14 +41,6 @@ src: /pages/agendas/agenda.md
 
 ---
 src: /pages/nowadays/main.md
----
-
----
-src: /pages/authlete/main.md
----
-
----
-src: /pages/furthermore/main.md
 ---
 
 ---
