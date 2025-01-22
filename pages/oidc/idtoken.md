@@ -294,8 +294,13 @@ JWT（JSON形式で表現されたクレーム（claim）の集合）がペイ�
 
 ## ペイロードのクレーム
 
-[JWTの仕様](https://datatracker.ietf.org/doc/html/rfc7519)では、以下のクレームが定義されている。\
-OIDCでは、そのうち、`iss`, `sub`, `aud`, `exp`, `iat`を必須としている（JWTの仕様では全て任意）。
+<!-- textlint-disabled max-comma -->
+
+[JWTの仕様](https://datatracker.ietf.org/doc/html/rfc7519)では、以下のクレームが定義されている。
+
+<!-- textlint-enabled max-comma -->
+
+OIDCでは、そのうち、`iss`、 `sub`、 `aud`、 `exp`、 `iat`を必須としている（JWTの仕様では全て任意）。
 
 | クレーム名 |                     説明                     |
 | :--------: | :------------------------------------------: |
