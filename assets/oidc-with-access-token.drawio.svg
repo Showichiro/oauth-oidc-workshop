@@ -1,0 +1,128 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="416px" height="200px" viewBox="-0.5 -0.5 416 200" content="&lt;mxfile&gt;&lt;diagram id=&quot;R2ZnCqDFhuiKS03krJjM&quot; name=&quot;Page-1&quot;&gt;zVjfb5swEP5r/LgKbCDmEfKjm7RJ1fqw7ZEGN7EEOAKnSfbXz8ZnwCHZ6JpplarK/myfj7vvPp+CyLw83tfZbvtF5KxA2MuPiCwQxtEsUv81cDIAiYgBNjXPDeT3wCP/yQD0AN3znDXORilEIfnOBdeiqthaOlhW1+LgbnsWhXvrLtuwEfC4zoox+o3ncmtQGno9/pHxzdbe7HuwUmZ2MwDNNsvFYQCRJSLzWghpRuVxzgodOxsXc251ZbVzrGaVnHIAmwMvWbGHb0NLgihBSQSDdN4OMEohaY082Tgo73d6uC+LZC1FjUj6wmrJVaQ+Z0+seBANl1xUasuTkFKUgw1JwTd6QYqdQreyLNTEV0OxlwWv2LzLnafA8XfBp2pz7DiA4DvvmSiZrE9qC6xSCDlwLobpoU8gAWg7yF0EWAaU2XR2+6iqAQT2cpBno8CxXPEJppWomBuBRma1TDRPFbAusqbhawuveGG3XY1JI/b1Gm6CwlJHN0w6Odc+/DZuNSsyyV9czr8lDvEFsmEU+yjxPy2AbpSe8y5ZWYQAEqtzMxTHKE3QkqrTiJrNPopnMAD+Yv1nEBqcDxK7WZmCpRQtV/rqeIVwVKiApU+1Gm30CJZo1A4WKF4OBu3xlFrLy9axBFH1XSGiK/sVxvlA76T2FLWn0uUr/YlQPEfJvDWYtNGYoQTbsJjbjc90gKgBbcNrluKBY+ZSdTzWUY3pecS68DquWjuXWN7qgEvvDCp/rXjL6guSUPI81zbSmjX8Z/bU2tMqsBO8ki0BwxSFi4s1MLuiC91rAPYcwb2kF94djokjGR/A0OTCANsP2u3eMMGuVVsX1oJ4fm5UrZ4XVufhpFqzT+Vk0VEBrE/fh5MfOup3oZ0ujpAFMzvBzBErMDtUqt+q9x+UKri1UrVHlbPZabABWHU9X7H7cuDAO0uOsfjXqbJP2VgX8St0UQ1Su4TdPbhfSuPJBn2LqCq30tsJ7VA730XdW8K/vfA/eHee58/eVus3LWYyIsjXh+vvE7369qShm3OCFLWvynct9lXOcsjeYcsle9xlbbkeVFvvJvcGDRohf+zQfPyPWrTwlWo5SdGCsaKR/9V7RVc1xpuqMR27ZrrpSbFml8qRplmgBaZvFxaX2qCu7Yjau0J9PPFQ6g8YOKI0jrJSM838Vx8wrfeaooKR9icZdz9W85RvoHBh3wa9C6kLb6h0xIsCp+pu0+P4ZzV5ExkMLnDYpWmXziRwSTB4JYHlgyXoaolm6n8XwdDtNfx/J4Jq2v/QYNLR/1pDlr8A&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <ellipse cx="60" cy="26.5" rx="7.5" ry="7.5" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <path d="M 60 34 L 60 59 M 60 39 L 45 39 M 60 39 L 75 39 M 60 59 L 45 79 M 60 59 L 75 79" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 86px; margin-left: 60px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: nowrap;">
+                                ユーザ
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="60" y="98" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    ユーザ
+                </text>
+            </switch>
+        </g>
+        <path d="M 288.63 49 L 81.37 49" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 293.88 49 L 286.88 52.5 L 288.63 49 L 286.88 45.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 76.12 49 L 83.12 45.5 L 81.37 49 L 83.12 52.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 20px; margin-left: 186px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                ②IDトークンを発行してもいいですか？
+                                <br/>
+                                ＆～～への認可を与えますか？
+                                <br/>
+                                本人確認（認証）をお願いします）
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="186" y="23" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    ②IDトークンを発行してもいいですか？...
+                </text>
+            </switch>
+        </g>
+        <path d="M 355 79 L 355 159 Q 355 169 345 169 L 126.37 169" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 121.12 169 L 128.12 165.5 L 126.37 169 L 128.12 172.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 170px; margin-left: 284px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                ③IDトークン・アクセストークンはこれです
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="284" y="173" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    ③IDトークン・アクセストークンはこれです
+                </text>
+            </switch>
+        </g>
+        <rect x="295" y="19" width="120" height="60" rx="9" ry="9" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 49px; margin-left: 296px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                RP
+                                <br/>
+                                （認可サーバ）
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="355" y="53" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    RP...
+                </text>
+            </switch>
+        </g>
+        <path d="M 120 144.59 L 289.1 75.81" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 293.96 73.83 L 288.8 79.71 L 289.1 75.81 L 286.16 73.22 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 119px; margin-left: 191px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                ①IDトークン（署名付きの認証情報）
+                                <br/>
+                                &amp; ～～へのアクセス権をください
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="191" y="123" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    ①IDトークン（署名付きの認証情報）...
+                </text>
+            </switch>
+        </g>
+        <rect x="0" y="139" width="120" height="60" rx="9" ry="9" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 169px; margin-left: 1px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                クライアントアプリ
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="60" y="173" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    クライアントアプリ
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Text is not SVG - cannot display
+            </text>
+        </a>
+    </switch>
+</svg>
